@@ -1,15 +1,15 @@
 <?php
-/**
- * Export Products
+/** 
+ * Export Module
  * @category export
  *
- * @author Oavea - Oavea.com
- * @copyright Oavea / PrestaShop
+ * @author Vimpel - netdec.ru
+ * @copyright Vimpel
  * @license http://www.opensource.org/licenses/osl-3.0.php Open-source licence 3.0
- * @version 2.1
+ * @version 2.1   
  */
 
-class AdminExportProductsController extends ModuleAdminController {
+class AdminExportModuleController extends ModuleAdminController {
 
 	public $available_fields;
 

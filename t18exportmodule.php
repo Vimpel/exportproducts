@@ -1,31 +1,31 @@
 <?php
 /**
-  * Export Products
+  * Export Module
   * @category export
   *
-  * @author Oavea - Oavea.com
-  * @copyright Oavea / PrestaShop
+  * @author Vimpel - netdec.ru
+  * @copyright Vimpel
   * @license http://www.opensource.org/licenses/osl-3.0.php Open-source licence 3.0
-  * @version 2.4.0
+  * @version 0.5.0
   */
 
-class ExportProducts extends Module
+class t18ExportModule extends Module
 {
 	public function __construct()
 	{
-		$this->name = 'exportproducts';
-		$this->tab = 'administration';
-		$this->version = '2.4.0';
-		$this->displayName = 'Export Products';
-		$this->author = 'Oavea - oavea.com';
-		$this->description = $this->l('A module to export all products to csv matching the Prestashop import template.');
+		$this->name = 't18exportmodule';
+		$this->tab = 'export';
+		$this->version = '0.5.0';
+		$this->displayName = 'T18 Export Module';
+		$this->author = 'Vimpel - netdec.ru';
+		$this->description = $this->l('A module to export all products and all categories to csv matching the Prestashop import template.');
 
 		parent::__construct();
 	}
 
 	public function install()
 	{
-		$this->installController('AdminExportProducts', 'Export Products');
+		$this->installController('AdminExportProducts', 'T18 Export Module');
 		return parent::install();
 
 	}

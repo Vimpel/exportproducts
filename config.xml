@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-	<name>exportproducts</name>
+	<name>t18exportmodule</name>
 	<displayName><![CDATA[Export Products]]></displayName>
 	<version><![CDATA[2.4]]></version>
 	<description><![CDATA[A module to export all products to csv matching the Prestashop import template.]]></description>
