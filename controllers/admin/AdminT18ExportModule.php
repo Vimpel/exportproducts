@@ -9,7 +9,7 @@
  * @version 2.1   
  */
 
-class AdminExportModuleController extends ModuleAdminController {
+class AdminT18ExportModuleController extends ModuleAdminController {
 
 	public $available_fields;
 
@@ -17,7 +17,7 @@ class AdminExportModuleController extends ModuleAdminController {
 	{
 		$this->bootstrap = true;
 
-		$this->meta_title = $this->l('Export Products');
+		$this->meta_title = $this->l('Export Data');
 		parent::__construct();
 		if (! $this->module->active)
 			Tools::redirectAdmin($this->context->link->getAdminLink('AdminHome'));
@@ -190,7 +190,7 @@ class AdminExportModuleController extends ModuleAdminController {
 		$helper->identifier = $this->identifier;
 		$helper->submit_action = 'submitExport';
 		$helper->currentIndex = self::$currentIndex;
-		$helper->token = Tools::getAdminTokenLite('AdminExportProducts');
+		$helper->token = Tools::getAdminTokenLite('AdminT18ExportModule');
 		$helper->tpl_vars = array(
 			'fields_value' => $this->getConfigFieldsValues(),
 			'languages'    => $this->context->controller->getLanguages(),

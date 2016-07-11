@@ -1,6 +1,6 @@
 <?php
 /**
-  * Export Module
+  * T18 Export Module
   * @category export
   *
   * @author Vimpel - netdec.ru
@@ -9,7 +9,7 @@
   * @version 0.5.0
   */
 
-class t18ExportModule extends Module
+class T18ExportModule extends Module
 {
 	public function __construct()
 	{
@@ -18,14 +18,14 @@ class t18ExportModule extends Module
 		$this->version = '0.5.0';
 		$this->displayName = 'T18 Export Module';
 		$this->author = 'Vimpel - netdec.ru';
-		$this->description = $this->l('A module to export all products and all categories to csv matching the Prestashop import template.');
+		$this->description = $this->l('A module to export all data to csv matching the Prestashop import template.');
 
 		parent::__construct();
 	}
 
 	public function install()
 	{
-		$this->installController('T18AdminExportModule', 'T18 Export Module');
+		$this->installController('AdminT18ExportModule', 'Export Data');
 		return parent::install();
 
 	}
@@ -45,7 +45,7 @@ class t18ExportModule extends Module
 
 	public function uninstall()
 	{
-		$this->uninstallController('T18AdminExportModule');
+		$this->uninstallController('AdminT18ExportModule');
 		return parent::uninstall();
 	}
 
