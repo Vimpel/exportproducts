@@ -25,7 +25,7 @@ class t18ExportModule extends Module
 
 	public function install()
 	{
-		$this->installController('AdminExportProducts', 'T18 Export Module');
+		$this->installController('T18AdminExportModule', 'T18 Export Module');
 		return parent::install();
 
 	}
@@ -45,7 +45,7 @@ class t18ExportModule extends Module
 
 	public function uninstall()
 	{
-		$this->uninstallController('AdminExportProducts');
+		$this->uninstallController('T18AdminExportModule');
 		return parent::uninstall();
 	}
 
