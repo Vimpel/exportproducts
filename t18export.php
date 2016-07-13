@@ -8,24 +8,26 @@
   * @license http://www.opensource.org/licenses/osl-3.0.php Open-source licence 3.0
   * @version 0.5.0
   */
+if (!defined('_PS_VERSION_'))
+  exit;
 
-class T18ExportModule extends Module
+class T18Export extends Module
 {
 	public function __construct()
 	{
-		$this->name = 't18exportmodule';
+		$this->name = 't18export';
 		$this->tab = 'export';
 		$this->version = '0.5.0';
 		$this->displayName = 'T18 Export Module';
 		$this->author = 'Vimpel - netdec.ru';
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6');
 		$this->description = $this->l('A module to export all data to csv matching the Prestashop import template.');
-
 		parent::__construct();
 	}
 
 	public function install()
 	{
-		$this->installController('AdminT18ExportModule', 'Export Data');
+		$this->installController('AdminT18Export', 'Export Data');
 		return parent::install();
 
 	}
@@ -45,7 +47,7 @@ class T18ExportModule extends Module
 
 	public function uninstall()
 	{
-		$this->uninstallController('AdminT18ExportModule');
+		$this->uninstallController('AdminT18Export');
 		return parent::uninstall();
 	}
 

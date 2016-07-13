@@ -9,7 +9,7 @@
  * @version 2.1   
  */
 
-class AdminT18ExportModuleController extends ModuleAdminController {
+class AdminT18ExportController extends ModuleAdminController {
 
 	public $available_fields;
 
@@ -190,7 +190,7 @@ class AdminT18ExportModuleController extends ModuleAdminController {
 		$helper->identifier = $this->identifier;
 		$helper->submit_action = 'submitExport';
 		$helper->currentIndex = self::$currentIndex;
-		$helper->token = Tools::getAdminTokenLite('AdminT18ExportModule');
+		$helper->token = Tools::getAdminTokenLite('AdminT18Export');
 		$helper->tpl_vars = array(
 			'fields_value' => $this->getConfigFieldsValues(),
 			'languages'    => $this->context->controller->getLanguages(),
@@ -373,14 +373,7 @@ class AdminT18ExportModuleController extends ModuleAdminController {
 
 	public function getCategories($id_lang, $active, $id_shop)
 	{
-		$result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-			SELECT *
-			FROM `'._DB_PREFIX_.'category` c
-			LEFT JOIN `'._DB_PREFIX_.'category_lang` cl ON c.`id_category` = cl.`id_category`
-			WHERE '($id_shop ? 'cl.`id_shop` = '.(int)$id_shop : '').' '.($id_lang ? 'AND `id_lang` = '.(int)$id_lang : '').'
-			'.($active ? 'AND `active` = 1' : '').'
-			'.(!$id_lang ? 'GROUP BY c.id_category' : '').'
-			ORDER BY c.`level_depth` ASC, c.`position` ASC');
+		$result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT * FROM `'._DB_PREFIX_.'category` as c LEFT JOIN `'._DB_PREFIX_.'category_lang` as cl ON c.`id_category` = cl.`id_category` WHERE '.($id_shop ? 'cl.`id_shop` = '.(int)$id_shop : '').' '.($id_lang ? 'AND `id_lang` = '.(int)$id_lang : '').' '.($active ? 'AND `active` = 1' : '').' '.(!$id_lang ? 'GROUP BY c.id_category' : '').' ORDER BY c.`level_depth` ASC, c.`position` ASC');
 
 		return $result;
 	}
