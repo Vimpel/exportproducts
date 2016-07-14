@@ -17,7 +17,7 @@ class AdminT18ExportController extends ModuleAdminController {
 	{
 		$this->bootstrap = true;
 
-		$this->meta_title = $this->l('Export Data');
+		$this->meta_title = $this->l('Export data');
 		parent::__construct();
 		if (! $this->module->active)
 			Tools::redirectAdmin($this->context->link->getAdminLink('AdminHome'));

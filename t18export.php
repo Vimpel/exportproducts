@@ -27,7 +27,7 @@ class T18Export extends Module
 
 	public function install()
 	{
-		$this->installController('AdminT18Export', 'Export Data');
+		$this->installController('AdminT18Export', $this->l('Export data'));
 		return parent::install();
 
 	}
