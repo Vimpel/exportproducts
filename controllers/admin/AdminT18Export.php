@@ -17,7 +17,7 @@ class AdminT18ExportController extends ModuleAdminController {
 	{
 		$this->bootstrap = true;
 
-		$this->meta_title = $this->l('Export data');
+		$this->meta_title = $this->l('Export data to CSV');
 		parent::__construct();
 		if (! $this->module->active)
 			Tools::redirectAdmin($this->context->link->getAdminLink('AdminHome'));
@@ -106,16 +106,19 @@ class AdminT18ExportController extends ModuleAdminController {
 
 	public function renderConfigurationForm()
 	{
-		$lang = new Language((int) Configuration::get('PS_LANG_DEFAULT'));
+		$lang = (int)Configuration::get('PS_LANG_DEFAULT');;
 		$langs = Language::getLanguages();
 		$id_shop = (int)$this->context->shop->id;
-
+                //echo '<pre>';
+                //var_dump($lang);
+                //var_dump($langs);
+                //echo '</pre>';
 		foreach ($langs as $key => $language)
 		{
 			$options[] = array('id_option' => $language['id_lang'], 'name' => $language['name']);
 		}
 
-		$cats = $this->getCategories($lang->id, true, $id_shop);
+		$cats = $this->getCategories($lang, true, $id_shop);
 
 		$categories[] = array('id_option' => 99999, 'name' => 'All');
 
@@ -149,8 +152,8 @@ class AdminT18ExportController extends ModuleAdminController {
 				'label' => $this->l('Export active products?'),
 				'name' => 'export_active',
 				'values' => array(
-					array('id' => 'active_off', 'value'=> 0, 'label' => 'no, export all products.'),
-					array('id' => 'active_on', 'value'=> 1, 'label' => 'yes, export only active products'),
+					array('id' => 'active_off', 'value'=> 0, 'label' => $this->l('no, export all products')),
+					array('id' => 'active_on', 'value'=> 1, 'label' => $this->l('yes, export only active products')),
 				),
 				'is_bool' => true,
 			),
@@ -184,8 +187,8 @@ class AdminT18ExportController extends ModuleAdminController {
 		$helper = new HelperForm();
 		$helper->show_toolbar = false;
 
-		$helper->default_form_language = $lang->id;
-		$helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
+		$helper->default_form_language = 1;
+		$helper->allow_employee_form_lang = 1;//Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
 		$this->fields_form = array();
 		$helper->identifier = $this->identifier;
 		$helper->submit_action = 'submitExport';
